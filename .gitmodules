@@ -4,3 +4,6 @@
 [submodule "3rd-party/cotire"]
 	path = 3rd-party/cotire
 	url = https://github.com/sakra/cotire.git
+[submodule "3rd-party/fmt"]
+	path = 3rd-party/fmt
+	url = https://github.com/fmtlib/fmt
