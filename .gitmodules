@@ -7,3 +7,6 @@
 [submodule "3rd-party/fmt"]
 	path = 3rd-party/fmt
 	url = https://github.com/fmtlib/fmt
+[submodule "3rd-party/google-test"]
+	path = 3rd-party/google-test
+	url = https://github.com/google/googletest.git
