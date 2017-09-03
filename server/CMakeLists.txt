@@ -64,6 +64,11 @@ include(cotire)
 # -------------------------- threads ----------------------------
 find_package(Threads)
 
+# -------------------------- OpenSSL ----------------------------
+find_package(OpenSSL REQUIRED)
+include_directories(${OPENSSL_INCLUDE_DIR})
+message(${OPENSSL_FOUND})
+
 # --------------------------- gtest -----------------------------
 set(BUILD_GMOCK         OFF CACHE BOOL "Builds the googlmock" FORCE)
 set(BUILD_GTEST         ON  CACHE BOOL "Builds the googletest" FORCE)
@@ -91,9 +96,11 @@ include_directories("${VOLT_3RD_PARTY}/yal/include")
 # --------------------------- sources ---------------------------
 set(HEADERS
     src/stdafx.h
+    ../shared/crypto/dsa.h
     )
 
 set(SOURCES
+    ../shared/crypto/dsa.cpp
     src/stdafx.cpp
 
     src/main.cpp
@@ -112,4 +119,5 @@ target_link_libraries (${PROJECT_NAME}
     fmt
     ${Boost_LIBRARIES}
     ${CMAKE_THREAD_LIBS_INIT}
+    ${OPENSSL_LIBRARIES}
     )
