@@ -18,14 +18,17 @@ include(source_group)
 include(use_fmt)
 include(use_yal)
 
-use_fmt("${VOLT_CORE_3RD_PARTY}")
-use_yal("${VOLT_CORE_3RD_PARTY}")
-
 # ---------------------------- boost ----------------------------
 find_package(Boost COMPONENTS
     system
     REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
+
+# ----------------------------- fmt -----------------------------
+use_fmt("${VOLT_CONSOLE_3RD_PARTY}")
+
+# ----------------------------- yal -----------------------------
+use_yal("${VOLT_CONSOLE_3RD_PARTY}")
 
 # -------------------------- threads ----------------------------
 find_package(Threads)

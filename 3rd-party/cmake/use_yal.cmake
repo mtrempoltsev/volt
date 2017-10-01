@@ -7,4 +7,7 @@
         add_subdirectory("${3rd_parties_root}/yal" yal)
         include_directories("${3rd_parties_root}/yal/include")
     endif()
+    if(Boost_FOUND)
+        add_definitions(-DYAL_USES_BOOST)
+    endif()
 endmacro()
