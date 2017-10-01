@@ -47,6 +47,7 @@ include(use_fmt)
 include(use_yal)
 
 # ---------------------------- boost ----------------------------
+set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost COMPONENTS
     filesystem
     system
