@@ -16,6 +16,7 @@ list(APPEND CMAKE_MODULE_PATH "${VOLT_CORE_3RD_PARTY}/cmake")
 include(cotire)
 include(source_group)
 include(use_fmt)
+include(use_rapidjson)
 include(use_yal)
 
 # ---------------------------- boost ----------------------------
@@ -27,6 +28,9 @@ include_directories(${Boost_INCLUDE_DIR})
 
 # ----------------------------- fmt -----------------------------
 use_fmt("${VOLT_CONSOLE_3RD_PARTY}")
+
+# -------------------------- rapidjson --------------------------
+use_rapidjson("${VOLT_CONSOLE_3RD_PARTY}")
 
 # ----------------------------- yal -----------------------------
 use_yal("${VOLT_CONSOLE_3RD_PARTY}")
