@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.4)
 
-project(volt-client-core)
+set(VOLT_CORE_PROJECT volt-client-core)
+
+project(${VOLT_CORE_PROJECT})
 
 get_filename_component(VOLT_CORE_ROOT "${CMAKE_SOURCE_DIR}" ABSOLUTE)
 
@@ -16,18 +18,23 @@ list(APPEND CMAKE_MODULE_PATH "${VOLT_CORE_3RD_PARTY}/cmake")
 include(cotire)
 include(source_group)
 include(use_fmt)
+include(use_gtest)
 include(use_rapidjson)
 include(use_yal)
 
 # ---------------------------- boost ----------------------------
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost COMPONENTS
+    filesystem
     system
     REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 
 # ----------------------------- fmt -----------------------------
 use_fmt("${VOLT_CONSOLE_3RD_PARTY}")
+
+# ---------------------------- gtest ----------------------------
+use_gtest("${VOLT_CONSOLE_3RD_PARTY}")
 
 # -------------------------- rapidjson --------------------------
 use_rapidjson("${VOLT_CONSOLE_3RD_PARTY}")
@@ -45,26 +52,32 @@ message(${OPENSSL_FOUND})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
-    src/stdafx.h
+    include/structs/server_info.h
     )
 
 set(SOURCES
+    src/stdafx.h
     src/stdafx.cpp
+
+    src/json/server_info_reader.h
+    src/json/server_info_reader.cpp
     )
 
 set_source_group("Header Files" ${SUBPROJECT_ROOT}/src ${HEADERS})
 set_source_group("Source Files" ${SUBPROJECT_ROOT}/src ${SOURCES})
 
-include_directories(include/)
+set(VOLT_CORE_INCLUDE include)
+
+include_directories(${VOLT_CORE_INCLUDE})
 
 add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
 set_target_properties(${PROJECT_NAME} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT src/stdafx.h)
 cotire(${PROJECT_NAME})
 
-target_link_libraries (${PROJECT_NAME}
-    yal
-    fmt
-    ${Boost_LIBRARIES}
-    ${CMAKE_THREAD_LIBS_INIT}
-    ${OPENSSL_LIBRARIES}
-    )
+set(VOLT_CORE_TEST_PROJECT test_${PROJECT_NAME})
+
+add_test(NAME ${VOLT_CORE_TEST_PROJECT} COMMAND ${VOLT_CORE_TEST_PROJECT})
+
+add_subdirectory(tests)
+
+enable_testing()

@@ -61,11 +61,8 @@ use_fmt("${VOLT_CONSOLE_3RD_PARTY}")
 use_yal("${VOLT_CONSOLE_3RD_PARTY}")
 
 # --------------------------- sources ---------------------------
-set(HEADERS
-    src/stdafx.h
-    )
-
 set(SOURCES
+    src/stdafx.h
     src/stdafx.cpp
 
     src/main.cpp
@@ -74,7 +71,6 @@ set(SOURCES
 # ----------------------- subdirectories ------------------------
 add_subdirectory(../core core)
 
-set_source_group("Header Files" ${SUBPROJECT_ROOT}/src ${HEADERS})
 set_source_group("Source Files" ${SUBPROJECT_ROOT}/src ${SOURCES})
 
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
