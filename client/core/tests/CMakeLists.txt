@@ -1,8 +1,6 @@
 project(${VOLT_CORE_TEST_PROJECT})
 
 set(SOURCES
-    json/server_info_reader_test.cpp
-
     main.cpp)
 
 add_executable(${VOLT_CORE_TEST_PROJECT} ${SOURCES})

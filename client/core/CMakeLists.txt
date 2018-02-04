@@ -4,7 +4,7 @@ set(VOLT_CORE_PROJECT volt-client-core)
 
 project(${VOLT_CORE_PROJECT})
 
-get_filename_component(VOLT_CORE_ROOT "${CMAKE_SOURCE_DIR}" ABSOLUTE)
+get_filename_component(VOLT_CORE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
 
 #----------------------- compile options ------------------------
 set(CMAKE_CXX_STANDARD 14)
@@ -52,21 +52,17 @@ message(${OPENSSL_FOUND})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
-    include/structs/server_info.h
     )
 
 set(SOURCES
     src/stdafx.h
     src/stdafx.cpp
-
-    src/json/server_info_reader.h
-    src/json/server_info_reader.cpp
     )
 
 set_source_group("Header Files" ${SUBPROJECT_ROOT}/src ${HEADERS})
 set_source_group("Source Files" ${SUBPROJECT_ROOT}/src ${SOURCES})
 
-set(VOLT_CORE_INCLUDE include)
+set(VOLT_CORE_INCLUDE ${VOLT_CORE_ROOT}/include)
 
 include_directories(${VOLT_CORE_INCLUDE})
 
