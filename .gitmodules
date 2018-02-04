@@ -16,6 +16,3 @@
 [submodule "3rd-party/rapidjson"]
 	path = 3rd-party/rapidjson
 	url = https://github.com/Tencent/rapidjson.git
-[submodule "3rd-party/flatbuffers"]
-	path = 3rd-party/flatbuffers
-	url = https://github.com/google/flatbuffers.git
