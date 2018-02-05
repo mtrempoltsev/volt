@@ -1,0 +1,6 @@
+[submodule "libs/yal"]
+	path = libs/yal
+	url = https://github.com/mtrempoltsev/yal.git
+[submodule "libs/pods"]
+	path = libs/pods
+	url = https://github.com/mtrempoltsev/pods.git
