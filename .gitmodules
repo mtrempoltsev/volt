@@ -3,4 +3,4 @@
 	url = https://github.com/mtrempoltsev/yal.git
 [submodule "3rd-party/pods"]
 	path = 3rd-party/pods
-	url = ../pods.git
+	url = https://github.com/mtrempoltsev/pods.git
