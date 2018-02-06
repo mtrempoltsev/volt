@@ -13,7 +13,6 @@
 
 #include <gtest/gtest.h>
 
-/*
 #include <pods/binary_serializer.h>
 #include <pods/json_serializer.h>
 #include <pods/memory_storage.h>
@@ -21,4 +20,3 @@
 #include <pods/pods.h>
 
 #include <yal/yal.h>
-*/
