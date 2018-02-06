@@ -4,3 +4,6 @@
 [submodule "libs/pods"]
 	path = libs/pods
 	url = https://github.com/mtrempoltsev/pods.git
+[submodule "libs/opensslpp"]
+	path = libs/opensslpp
+	url = https://github.com/mtrempoltsev/opensslpp.git

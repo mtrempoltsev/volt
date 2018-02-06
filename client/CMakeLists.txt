@@ -128,6 +128,10 @@ find_package(Threads)
 # --------------------------- libs ------------------------------
 get_filename_component(VOLT_LIBS "${VOLT_CLIENT_ROOT}/../libs" ABSOLUTE)
 
+# ------------------------ opensslpp ----------------------------
+set(VOLT_OPENSSLPP_ROOT "${VOLT_LIBS}/opensslpp")
+include_directories("${VOLT_OPENSSLPP_ROOT}/include")
+
 # --------------------------- pods ------------------------------
 set(VOLT_PODS_ROOT "${VOLT_LIBS}/pods")
 include_directories("${VOLT_PODS_ROOT}/include")
