@@ -1,6 +1,4 @@
-﻿#include "stdafx.h"
-
-int main(int argc, char* argv[])
+﻿int main(int argc, char* argv[])
 {
     YAL_INFO << "hello!";
 

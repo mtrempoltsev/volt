@@ -1,17 +1,31 @@
-project(${VOLT_CORE_TEST_PROJECT})
+project(${VOLT_CLIENT_CORE_TEST})
+
+# --------------------------- sources ---------------------------
+set(HEADERS
+    )
 
 set(SOURCES
-    main.cpp)
+    src/main.cpp
+    
+    src/test_configs_servers.cpp
+    )
 
-add_executable(${VOLT_CORE_TEST_PROJECT} ${SOURCES})
-set_target_properties(${VOLT_CORE_TEST_PROJECT} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT ../src/stdafx.h)
-cotire(${VOLT_CORE_TEST_PROJECT})
+set_source_group(${HEADERS})
+set_source_group(${SOURCES})
 
-target_link_libraries(${VOLT_CORE_TEST_PROJECT}
-    gtest
-    yal
-    fmt
+# ------------------------ precompiled --------------------------
+set(PRECOMPILED_HEADERS pch/stdafx.h pch/stdafx.cpp)
+set_source_group(${PRECOMPILED_HEADERS})
+
+get_filename_component(PRECOMPILED_DIR pch/ ABSOLUTE)
+use_precompiled_header(${PRECOMPILED_DIR} ${SOURCES})
+
+# ---------------------------------------------------------------
+add_executable(${PROJECT_NAME} ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
+
+target_link_libraries(${PROJECT_NAME}
+    ${VOLT_GTEST_LIBRARIES}
     ${Boost_LIBRARIES}
     ${CMAKE_THREAD_LIBS_INIT}
-    ${OPENSSL_LIBRARIES}
-    ${VOLT_CORE_PROJECT})
+    ${VOLT_CORE_PROJECT}
+    )

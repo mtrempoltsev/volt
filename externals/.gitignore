@@ -1,1 +1,6 @@
-/msvc2015x64/
+/boost-1.66.0/
+/fmt-4.1.0/
+/googletest-1.8.0/
+/lz4-1.8.1.2/
+/openssl-1.1.0f/
+/rapidjson-1.1.0/
