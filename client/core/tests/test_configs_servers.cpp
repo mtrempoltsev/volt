@@ -1,4 +1,4 @@
-﻿#include "../../include/configs/servers.h"
+﻿#include "../configs/servers.h"
 
 TEST(clientConfigsServers, common)
 {
@@ -29,7 +29,7 @@ TEST(clientConfigsServers, common)
     EXPECT_EQ(expected.servers[0].address, actual.servers[0].address);
     EXPECT_EQ(expected.servers[0].port, actual.servers[0].port);
 
-    EXPECT_EQ(expected.servers[0].name, actual.servers[1].name);
+    EXPECT_EQ(expected.servers[1].name, actual.servers[1].name);
     EXPECT_EQ(expected.servers[1].publicKey, actual.servers[1].publicKey);
     EXPECT_EQ(expected.servers[1].address, actual.servers[1].address);
     EXPECT_EQ(expected.servers[1].port, actual.servers[1].port);

@@ -1,6 +1,4 @@
-cmake_minimum_required(VERSION 3.4)
-
-project(volt-console)
+project(${TEST_PROJECT})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
@@ -23,10 +21,9 @@ use_precompiled_header(${PRECOMPILED_DIR} ${SOURCES})
 # ---------------------------------------------------------------
 add_executable(${PROJECT_NAME} ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
 
-target_link_libraries (${PROJECT_NAME}
-    ${VOLT_CLIENT_CORE}
+target_link_libraries(${PROJECT_NAME}
+    ${VOLT_GTEST_LIBRARIES}
     ${Boost_LIBRARIES}
-    ${FMT_LIBRARIES}
-    ${VOLT_YAL_LIB}
+    ${CMAKE_THREAD_LIBS_INIT}
     ${VOLT_UTILS}
     )

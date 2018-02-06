@@ -2,17 +2,17 @@ cmake_minimum_required(VERSION 3.4)
 
 project(volt-client)
 
-get_filename_component(VOLT_ROOT "${CMAKE_SOURCE_DIR}" ABSOLUTE)
+get_filename_component(VOLT_CLIENT_ROOT "${CMAKE_SOURCE_DIR}" ABSOLUTE)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
     set(VOLT_DEBUG ON)
-    set(VOLT_BIN_DIR "${VOLT_ROOT}/bin/Debug")
-    set(VOLT_LIB_DIR "${VOLT_ROOT}/bin/Debug")
+    set(VOLT_BIN_DIR "${VOLT_CLIENT_ROOT}/bin/Debug")
+    set(VOLT_LIB_DIR "${VOLT_CLIENT_ROOT}/bin/Debug")
     set(CMAKE_CONFIGURATION_TYPES "Debug" CACHE STRING "" FORCE)
 elseif(${CMAKE_BUILD_TYPE} STREQUAL "Release")
     set(VOLT_RELEASE ON)
-    set(VOLT_BIN_DIR "${VOLT_ROOT}/bin/Release")
-    set(VOLT_LIB_DIR "${VOLT_ROOT}/bin/Release")
+    set(VOLT_BIN_DIR "${VOLT_CLIENT_ROOT}/bin/Release")
+    set(VOLT_LIB_DIR "${VOLT_CLIENT_ROOT}/bin/Release")
     set(CMAKE_CONFIGURATION_TYPES "Release" CACHE STRING "" FORCE)
 else()
     message(FATAL_ERROR "please add -DCMAKE_BUILD_TYPE=(Debug|Release)")
@@ -62,7 +62,7 @@ endif()
 message(STATUS "platform: " ${VOLT_PLATFORM})
 
 # ------------------------- externals ---------------------------
-get_filename_component(VOLT_EXTERNALS "${VOLT_ROOT}/../externals" ABSOLUTE)
+get_filename_component(VOLT_EXTERNALS "${VOLT_CLIENT_ROOT}/../externals" ABSOLUTE)
 
 # ---------------------------- boost ----------------------------
 set(VOLT_BOOST_ROOT "${VOLT_EXTERNALS}/boost-1.66.0")
@@ -126,7 +126,7 @@ include_directories("${VOLT_RAPIDJSON_ROOT}/include")
 find_package(Threads)
 
 # --------------------------- libs ------------------------------
-get_filename_component(VOLT_LIBS "${VOLT_ROOT}/../libs" ABSOLUTE)
+get_filename_component(VOLT_LIBS "${VOLT_CLIENT_ROOT}/../libs" ABSOLUTE)
 
 # --------------------------- pods ------------------------------
 set(VOLT_PODS_ROOT "${VOLT_LIBS}/pods")
@@ -172,7 +172,10 @@ else()
 endif()
 
 # ----------------------- subdirectories ------------------------
-set(VOLT_CLIENT_CORE volt-client-core)
+set(VOLT_UTILS volt-utils)
+add_subdirectory(../utils utils)
 
+set(VOLT_CLIENT_CORE volt-client-core)
 add_subdirectory(core)
+
 add_subdirectory(console)

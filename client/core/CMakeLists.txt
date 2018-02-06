@@ -6,7 +6,7 @@ include_directories(${VOLT_CORE_INCLUDE})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
-    include/configs/servers.h
+    configs/servers.h
     )
 
 set(SOURCES
@@ -26,8 +26,8 @@ use_precompiled_header(${PRECOMPILED_DIR} ${SOURCES})
 add_library(${PROJECT_NAME} STATIC ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
 
 # --------------------------- tests -----------------------------
-set(VOLT_CLIENT_CORE_TEST test_${PROJECT_NAME})
-add_test(NAME ${VOLT_CLIENT_CORE_TEST} COMMAND ${VOLT_CLIENT_CORE_TEST})
+set(TEST_PROJECT test_${PROJECT_NAME})
+add_test(NAME ${TEST_PROJECT} COMMAND ${TEST_PROJECT})
 
 add_subdirectory(tests)
 

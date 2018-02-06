@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.4)
 
-project(volt-console)
+project(${VOLT_UTILS})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
+    locale.h
     )
 
 set(SOURCES
-    main.cpp
+    locale.cpp
     )
 
 set_source_group(${HEADERS})
@@ -21,12 +22,12 @@ get_filename_component(PRECOMPILED_DIR pch/ ABSOLUTE)
 use_precompiled_header(${PRECOMPILED_DIR} ${SOURCES})
 
 # ---------------------------------------------------------------
-add_executable(${PROJECT_NAME} ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
+add_library(${PROJECT_NAME} STATIC ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
 
-target_link_libraries (${PROJECT_NAME}
-    ${VOLT_CLIENT_CORE}
-    ${Boost_LIBRARIES}
-    ${FMT_LIBRARIES}
-    ${VOLT_YAL_LIB}
-    ${VOLT_UTILS}
-    )
+# --------------------------- tests -----------------------------
+set(TEST_PROJECT test_${PROJECT_NAME})
+add_test(NAME ${TEST_PROJECT} COMMAND ${TEST_PROJECT})
+
+add_subdirectory(tests)
+
+enable_testing()

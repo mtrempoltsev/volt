@@ -1,13 +1,12 @@
-project(${VOLT_CLIENT_CORE_TEST})
+project(${TEST_PROJECT})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
     )
 
 set(SOURCES
-    src/main.cpp
-    
-    src/test_configs_servers.cpp
+    main.cpp
+    test_configs_servers.cpp
     )
 
 set_source_group(${HEADERS})
@@ -28,4 +27,5 @@ target_link_libraries(${PROJECT_NAME}
     ${Boost_LIBRARIES}
     ${CMAKE_THREAD_LIBS_INIT}
     ${VOLT_CORE_PROJECT}
+    ${VOLT_UTILS}
     )
