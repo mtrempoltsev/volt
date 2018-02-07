@@ -1,8 +1,8 @@
-﻿#include "../../utils/locale.h"
+﻿#include "../../utils/localization/locale.h"
 
 int main(int argc, char* argv[])
 {
-    volt::utils::setDefaultLocale();
+    volt::localization::setDefaultLocale();
 
     YAL_INFO << "hello!";
 

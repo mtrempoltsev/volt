@@ -5,6 +5,8 @@ set(HEADERS
     )
 
 set(SOURCES
+    memory/test_buffer.cpp
+    network/test_transport_packet.cpp
     main.cpp
     )
 

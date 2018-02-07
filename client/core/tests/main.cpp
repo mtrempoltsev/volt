@@ -1,8 +1,8 @@
-﻿#include "../../../utils/locale.h"
+﻿#include "../../../utils/localization/locale.h"
 
 int main(int argc, char* argv[])
 {
-    volt::utils::setDefaultLocale();
+    volt::localization::setDefaultLocale();
 
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

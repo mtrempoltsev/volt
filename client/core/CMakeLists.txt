@@ -26,7 +26,7 @@ use_precompiled_header(${PRECOMPILED_DIR} ${SOURCES})
 add_library(${PROJECT_NAME} STATIC ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
 
 # --------------------------- tests -----------------------------
-set(TEST_PROJECT test_${PROJECT_NAME})
+set(TEST_PROJECT test-${PROJECT_NAME})
 add_test(NAME ${TEST_PROJECT} COMMAND ${TEST_PROJECT})
 
 add_subdirectory(tests)

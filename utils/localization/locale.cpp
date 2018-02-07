@@ -1,6 +1,6 @@
 ﻿#include "locale.h"
 
-void volt::utils::setDefaultLocale()
+void volt::localization::setDefaultLocale()
 {
 #if defined(_WIN32)
     std::locale::global(boost::locale::generator().generate("en_US.UTF-8"));

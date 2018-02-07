@@ -2,7 +2,7 @@
 
 namespace volt
 {
-    namespace utils
+    namespace localization
     {
         void setDefaultLocale();
     }

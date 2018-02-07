@@ -16,7 +16,8 @@ namespace volt
                 PODS_MDR(name),
                 PODS_MDR(publicKey),
                 PODS_MDR(address),
-                PODS_MDR(port))
+                PODS_MDR(port)
+            )
         };
 
         struct ServerList

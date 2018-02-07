@@ -4,11 +4,16 @@ project(${VOLT_UTILS})
 
 # --------------------------- sources ---------------------------
 set(HEADERS
-    locale.h
+    localization/locale.h
+    memory/buffer.h
+    memory/view.h
+    network/transport_packet.h
     )
 
 set(SOURCES
-    locale.cpp
+    localization/locale.cpp
+    memory/buffer.cpp
+    network/transport_packet.cpp
     )
 
 set_source_group(${HEADERS})
@@ -25,7 +30,7 @@ use_precompiled_header(${PRECOMPILED_DIR} ${SOURCES})
 add_library(${PROJECT_NAME} STATIC ${PRECOMPILED_HEADERS} ${HEADERS} ${SOURCES})
 
 # --------------------------- tests -----------------------------
-set(TEST_PROJECT test_${PROJECT_NAME})
+set(TEST_PROJECT test-${PROJECT_NAME})
 add_test(NAME ${TEST_PROJECT} COMMAND ${TEST_PROJECT})
 
 add_subdirectory(tests)
